@@ -12,7 +12,14 @@ import random
 
 def field(items, *args):
     assert len(args) > 0
-    # Необходимо реализовать генератор 
+    # Необходимо реализовать генератор
+    for dict in items:
+        if len(args) == 1:
+            d = dict.get(args[0])
+            if d: yield d
+        else:
+            d = {a: dict.get(a) for a in args if dict.get(a)}
+            yield {a: dict.get(a) for a in args if dict.get(a)}
 
 
 # Генератор списка случайных чисел
@@ -20,5 +27,5 @@ def field(items, *args):
 # gen_random(1, 3, 5) должен выдать примерно 2, 2, 3, 2, 1
 # Hint: реализация занимает 2 строки
 def gen_random(begin, end, num_count):
-    pass
-    # Необходимо реализовать генератор
+    for y in range(num_count):
+        yield random.randint(begin,end)
