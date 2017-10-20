@@ -9,16 +9,18 @@ import random
 # ]
 # field(goods, 'title') должен выдавать 'Ковер', 'Диван для отдыха'
 # field(goods, 'title', 'price') должен выдавать {'title': 'Ковер', 'price': 2000}, {'title': 'Диван для отдыха', 'price': 5300}
+from librip.ctxmngrs import Timer as timer
 
 def field(items, *args):
+
     assert len(args) > 0
     # Необходимо реализовать генератор
-    for dict in items:
-        if len(args) == 1:
+    if len(args) == 1:
+        for dict in items:
             d = dict.get(args[0])
             if d: yield d
-        else:
-            d = {a: dict.get(a) for a in args if dict.get(a)}
+    else:
+        for dict in items:
             yield {a: dict.get(a) for a in args if dict.get(a)}
 
 

@@ -8,4 +8,4 @@ class Timer(object):
         pass
 
     def __exit__(self, exp_type, exp_value, exp_tr):
-        print(time.time() - self.start)
+        print('%20f' % round(time.time() - self.start, 20))

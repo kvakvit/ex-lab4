@@ -14,13 +14,13 @@ path = 'data_light.json'
 with open(path) as f:
     data = json.load(f)
 
+
 @print_result
 def f1(arg):
     return list(sorted(unique(field(data, 'job-name'), ignore_case=True), key=lambda x: x.lower()))
 
 @print_result
 def f2(arg):
-    print(arg)
     return list(filter(lambda x: x.lower().startswith('программист'), arg))
 
 @print_result
